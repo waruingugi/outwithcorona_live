@@ -1,0 +1,87 @@
+{% extends "info/layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row mt-1">
+        <div class="col">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close btn-lg" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                These results are based on public input and should not be assumed to be accurate.
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-1">
+        <div class="col">
+            <h4>{{ info.county }} COUNTY</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{ info.flu_like }}</h5>
+                    <hr>
+                    <p class="card-text">Flu-like symptoms</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{ info.suspected_cases }}</h5>
+                    <hr>
+                    <p class="card-text">Suspected COVID-19 cases</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{ info.chance_of_contracting }}%</h5>
+                    <hr>
+                    <p class="card-text">Chance of getting covid-19</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{ info.fever_or_breathing_difficulty }}</h5>
+                    <hr>
+                    <p class="card-text">Fever or breathing difficulty</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ info.flew_in_recently }}</h5>
+                    <hr>
+                    <p class="card-text">Flew into Kenya recently</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-5">
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">KENYA</h5>
+                    <hr>
+                    <p class="card-text">{{ info.total_cases }} suspected infections</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+/* Sticky Footer Classes */
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.navbar, footer {
+  background-color: #000a2f !important;
+}
+
+@media only screen and (max-width: 600px) {
+  div.card-header {
+    padding-left: .25rem !important;
+    padding-right: .25rem !important;
+  }
+
+  ul#myTab {
+    padding-left: .65rem !important;
+    padding-right: .35rem !important;
+  }
+}

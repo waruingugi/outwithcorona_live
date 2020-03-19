@@ -1,0 +1,79 @@
+{% extends "info/layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="card mt-5 mb-5">
+        <div class="card-header"> 
+            <ul class="nav nav-tabs card-header-tabs"  id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" href="{% url 'home' %}" >{{ title }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="profile-tab">Symptoms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="profile-tab">Results</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-body text-left">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h5 class="text-center">Details</h5>
+                            <hr>
+                                <form role="form" action="#" method="POST" autocomplete="off">
+                                    {% csrf_token %}
+                                    <p class="text-danger text-left">{{form.phone_number.errors.as_text }}</p>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone_number">Enter phone number:</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-phone-addon">+254</span>
+                                            </div>
+                                            <input class="form-control" type="text"  name="phone_number" placeholder="704123567" id="phone_number"
+                                                value = "{{ form.user_phone_number.value|default_if_none:'' }}" aria-describedby="basic-phone-addon" required>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-danger text-left">{{form.county.errors.as_text }}</p>
+                                    <div class="form-group">
+                                        <label for="county">Select county:</label>
+                                        <select class="custom-select" id="county" name="county" required>
+                                            {% for county in counties %}
+                                                <option value="{{ county }}">{{ county }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        
+                                    </div>
+
+                                    <div class="form-group  my-3">
+                                        <div class="custom-control custom-toggle">
+                                            <input type="checkbox" id="customToggle" name="arrived_recently" class="custom-control-input">
+                                            <label class="custom-control-label" for="customToggle">I recently arrived in Kenya</label>
+                                        </div>
+                                    </div>
+
+                            <hr>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-block" type="submit">
+                                            Next
+                                            <i class="fas fa-arrow-right ml-1"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

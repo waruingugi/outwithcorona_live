@@ -1,0 +1,54 @@
+{% extends "info/layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="card mt-5 mb-5">
+        <div class="card-header"> 
+            <ul class="nav nav-tabs card-header-tabs"  id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="home-tab" href="{% url 'home' %}">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab"  href="{% url 'symptoms' %}">Symptoms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="profile-tab" href="{% url 'verification' %}">Results</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-body text-left">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h5 class="text-center">Verification</h5>
+                            <hr>
+                                <form role="form" action="#" method="POST" autocomplete="off">
+                                    {% csrf_token %}
+                                    <p class="text-danger text-left">{{ message }}</p>
+                                    
+                                    <div class="form-group">
+                                        <label for="verification">Enter verification code sent to your phone:</label>
+                                        <input type="text" class="form-control" id="verification" name="verification_code" placeholder="0000">
+                                    </div>
+
+                                    <hr>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-block" type="submit">
+                                            View results
+                                        </button>
+                                    </div>
+                                </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

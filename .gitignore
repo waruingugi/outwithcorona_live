@@ -1,0 +1,22 @@
+# env files store config stuff
+.env
+env.sh
+.env/
+env/
+
+# Django stuff:
+*.log
+
+*.DS_Store
+*.pyc
+__pycache__
+
+# celery
+celerybeat-schedule
+celerybeat.pid
+
+# Zipped files
+*.gz
+
+# Dump files
+dump.rdb

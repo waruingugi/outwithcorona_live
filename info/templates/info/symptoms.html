@@ -1,0 +1,100 @@
+{% extends "info/layout.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="card mt-5 mb-5">
+        <div class="card-header"> 
+            <ul class="nav nav-tabs card-header-tabs"  id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="home-tab" href="{% url 'home' %}">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="{% url 'symptoms' %}">Symptoms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Results</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-body text-left">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h5 class="text-center">Do you have any of the following symptoms?</h5>
+                            <hr>
+
+                                <form role="form" action="#" method="POST" autocomplete="off">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="sore_throat">
+                                                    <label class="custom-control-label" for="customCheck1">Sore throat</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="fatigue">
+                                                    <label class="custom-control-label" for="customCheck2">Fatigue</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck3" name="coughing_or_sneezing">
+                                                    <label class="custom-control-label" for="customCheck3">Coughing/Sneezing</label>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="runny_nose">
+                                                    <label class="custom-control-label" for="customCheck4">Runny nose</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck5" name="fever">
+                                                    <label class="custom-control-label" for="customCheck5">Fever</label>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox mb-3">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="breathing_difficulty">
+                                                    <label class="custom-control-label" for="customCheck6">Breathing difficulty</label>
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                    
+                                    </div>
+
+                                    <hr>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-block" type="submit">
+                                            Next
+                                            <i class="fas fa-arrow-right ml-1"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
