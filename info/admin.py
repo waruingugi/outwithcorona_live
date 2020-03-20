@@ -21,6 +21,7 @@ class AdminPage(UserAdmin):
 
 class CoronaSymptomsPage(admin.ModelAdmin):
     list_display = ('user', 'user_symptoms')
+    search_fields = ('user__phone_number', 'user_symptoms')
 
 
 admin.site.register(Users, AdminPage)
