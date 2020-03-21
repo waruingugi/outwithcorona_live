@@ -32,7 +32,7 @@ DEBUG = bool(
     int(os.getenv('DEBUG'))
 )
 
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS'), 'www.coronainkenya.co.ke']
 
 # Application definition
 
