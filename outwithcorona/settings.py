@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 # Whitenoise causing errors, now using django-static
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DATABASES = { 'default': dj_database_url.config(conn_max_age=500) }
+DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
 
 # Django Security Settings
 SECURE_BROWSER_XSS_FILTER = True

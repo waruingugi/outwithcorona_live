@@ -3,7 +3,7 @@ from django.http import HttpRequest
 from info.forms import IdentificationForm, SymptomsForm, VerificationForm
 from django.shortcuts import redirect
 from info.models import Users, CoronaSymptoms
-from info.tasks import send_verification_code, get_county_population
+from info.tasks import send_verification_code, get_county_population, number_of_users
 from info.data_choices import (
     COUNTY_CHOICES, COUGHING_OR_SNEEZING, FATIGUE,
     RUNNY_NOSE, BREATHING_DIFFICULTY, FEVER, SORE_THROAT
@@ -65,7 +65,8 @@ def identification(request, exception=None):
         {
             'title': 'Details',
             'form': identification_form,
-            'counties': counties_list
+            'counties': counties_list,
+            'users': number_of_users()
         }
     )
 
@@ -132,7 +133,8 @@ def get_symptoms(request):
         'info/symptoms.html',
         {
             'title': 'Symptoms',
-            'form': symptoms_form
+            'form': symptoms_form,
+            'users': number_of_users()
         }
     )
 
@@ -168,7 +170,8 @@ def verify_user(request):
         'info/verification.html',
         {
             'title': 'Verification',
-            'message': error_message
+            'message': error_message,
+            'users': number_of_users()
         }
     )
 
@@ -234,6 +237,7 @@ def results(request):
         'info/results.html',
         {
             'title': 'Results',
-            'info': info
+            'info': info,
+            'users': number_of_users()
         }
     )

@@ -4,6 +4,7 @@ import africastalking
 import outwithcorona.settings as settings
 from retry import retry
 import csv
+from info.models import Users
 
 # Initiate logging
 import logging
@@ -82,3 +83,9 @@ def get_county_population(county):
             break
 
     return float(house_hold_total)
+
+
+def number_of_users():
+    number_of_users = Users.objects.all().count()
+    logger.info('Return number of users less than one')
+    return (number_of_users - 1)
