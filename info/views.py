@@ -48,6 +48,10 @@ def identification(request, exception=None):
                 county=county,
                 arrived_recently=arrived_recently
             )
+
+            """Send verification code to user phone number."""
+            send_verification_code(request)
+
             logger.info('{} successfull registration'.format(phone_number))
         else:
             Users.objects.filter(phone_number=phone_number).update(
@@ -65,7 +69,8 @@ def identification(request, exception=None):
         {
             'title': 'Details',
             'form': identification_form,
-            'counties': counties_list
+            'counties': counties_list,
+            'step': 1
         }
     )
 
@@ -110,8 +115,8 @@ def get_symptoms(request):
             )
         else:
             user_status = CoronaSymptoms.objects.get(user=user)
-
             user_status.user_symptoms = symptoms
+
             user_status.save()
             logger.info('{} updated user symptoms successfully'.format(
                 request.session['phone_number'])
@@ -122,9 +127,6 @@ def get_symptoms(request):
 
             return redirect(results)
         else:
-            """Send verification code to user phone number."""
-            send_verification_code(request)
-
             return redirect(verify_user)
 
     return render(
@@ -132,7 +134,8 @@ def get_symptoms(request):
         'info/symptoms.html',
         {
             'title': 'Symptoms',
-            'form': symptoms_form
+            'form': symptoms_form,
+            'step': 2
         }
     )
 
@@ -168,7 +171,8 @@ def verify_user(request):
         'info/verification.html',
         {
             'title': 'Verification',
-            'message': error_message
+            'message': error_message,
+            'step': 3
         }
     )
 
@@ -234,6 +238,7 @@ def results(request):
         'info/results.html',
         {
             'title': 'Results',
-            'info': info
+            'info': info,
+            'step': 3
         }
     )

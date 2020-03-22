@@ -29,16 +29,17 @@
                                 <form role="form" action="#" method="POST" autocomplete="off">
                                     {% csrf_token %}
                                     <p class="text-danger text-left">{{form.phone_number.errors.as_text }}</p>
-                                    
-                                    <div class="form-group">
+                                    <div class="form-group mb-0">
                                         <label for="phone_number">Enter phone number:</label>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group mb-0">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-phone-addon">+254</span>
                                             </div>
                                             <input class="form-control" type="text"  name="phone_number" placeholder="704123567" id="phone_number"
                                                 value = "{{ form.user_phone_number.value|default_if_none:'' }}" aria-describedby="basic-phone-addon" required>
                                         </div>
+                                        
+                                    <small class="font-weight-bold">No charges applied</small>
                                     </div>
 
                                     <p class="text-danger text-left">{{form.county.errors.as_text }}</p>
@@ -62,7 +63,7 @@
                             <hr>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" type="submit">
-                                            Next
+                                            Almost Done
                                             <i class="fas fa-arrow-right ml-1 animated headShake infinite slower delay-3s"></i>
                                         </button>
                                     </div>

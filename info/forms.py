@@ -32,6 +32,10 @@ class IdentificationForm(forms.ModelForm):
     def clean(self, *args, **kwargs):
         logger.info('Executing identification form.')
         phone_number = self.cleaned_data.get('phone_number')
+
+        if phone_number.startswith('0'):
+            phone_number = phone_number[1:]
+
         valid_phone_number = re.search(r'7\d{8}$', phone_number)
 
         if valid_phone_number and len(phone_number) == 9:
