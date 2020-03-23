@@ -189,7 +189,7 @@ def results(request):
         user = Users.objects.get(phone_number=request.session['phone_number'])
 
         flu_like_cases = CoronaSymptoms.objects.filter(
-            user_symptoms__overlap=[COUGHING_OR_SNEEZING, RUNNY_NOSE],
+            user_symptoms__overlap=[COUGHING_OR_SNEEZING, RUNNY_NOSE, SORE_THROAT],
             user__county=user.county
         ).count()
 
